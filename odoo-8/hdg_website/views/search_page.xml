@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+        <template id="website.property" page="True">
+            <t t-call="website.layout">
+                <div id="wrap"/>
+                <div id="rem-container">
+                    <section>
+                        <div class="oe_structure">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-12">
+                                        <form method="post" action="/property">
+                                            <div class="rem-form-search rem-box-shadow padding-0-30">
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active" id="ct-1"><a data-toggle="tab" href="#buy">Buy</a></li>
+                                                    <li id="ct-2" class=""><a data-toggle="tab" href="#rent">Rent</a></li>
+                                                </ul>
+                                                <input id="offer_type" name="offer_type" value="1" type="hidden"/>
+                                                <div class="row">
+                                                    <div class="col-sm-8 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                                                                <input id="name" name="name" t-attf-value="#{name or ''}" maxlength="128" class="form-control" title="Search for state, city or zone" placeholder="Search for state, city or zone" autocomplete="off" type="text"/>
+                                                                <div class="rem-autocomplete-container">
+                                                                    <ul id="multi_search_autocomplete_buy" class="rem-autocomplete rem-box-shadow display-none"></ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-group">
+                                                                <select name="property_type" class="form-control selected">
+                                                                    <option value="">All Property Types</option>
+                                                                    <option value="1">Flats / Appartments</option>
+                                                                    <option value="2">Houses</option>
+                                                                    <option value="3">Bungalows</option>
+                                                                    <option value="4">Land</option>
+                                                                    <option value="5">Commercial Property</option>
+                                                                    <option value="6">Other</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row margin-top-20">
+                                                    <div class="col-sm-push-8 col-sm-4 col-xs-12 hidden-xs">
+                                                        <div class="form-group">
+                                                            <button type="reset" value="reset" class="btn btn-default btn-block ladda-button waves-effect waves-light"><i class="fa fa-eraser" aria-hidden="true"></i>Reset</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-pull-4 col-sm-4 col-xs-12">
+                                                        <div class="form-group">
+                                                            <select name="min_beds" class="form-control selected">
+                                                                <option value="">Min beds</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-pull-4 col-sm-4 col-xs-12">
+                                                        <div class="form-group">
+                                                            <select name="max_beds" class="form-control">
+                                                                <option value="">Max beds</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row margin-top-20">
+                                                    <div class="col-sm-4 col-xs-12">
+                                                        <div class="form-group">
+                                                            <select name="min_price" class="form-control">
+                                                                <option value="">Min price</option>
+                                                                <option value="50000">$50,000</option>
+                                                                <option value="100000">$100,000</option>
+                                                                <option value="150000">$150,000</option>
+                                                                <option value="200000">$200,000</option>
+                                                                <option value="250000">$250,000</option>
+                                                                <option value="300000">$300,000</option>
+                                                                <option value="350000">$350,000</option>
+                                                                <option value="400000">$400,000</option>
+                                                                <option value="450000">$450,000</option>
+                                                                <option value="500000">$500,000</option>
+                                                                <option value="550000">$550,000</option>
+                                                                <option value="600000">$600,000</option>
+                                                                <option value="650000">$650,000</option>
+                                                                <option value="700000">$700,000</option>
+                                                                <option value="750000">$750,000</option>
+                                                                <option value="800000">$800,000</option>
+                                                                <option value="850000">$850,000</option>
+                                                                <option value="900000">$900,000</option>
+                                                                <option value="950000">$950,000</option>
+                                                                <option value="1000000">$1,000,000</option>
+                                                                <option value="1250000">$1,250,000</option>
+                                                                <option value="1500000">$1,500,000</option>
+                                                                <option value="1750000">$1,750,000</option>
+                                                                <option value="2000000">$2,000,000</option>
+                                                                <option value="3000000">$3,000,000</option>
+                                                                <option value="4000000">$4,000,000</option>
+                                                                <option value="5000000">$5,000,000</option>
+                                                                <option value="10000000">$10,000,000</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xs-12">
+                                                        <div class="form-group">
+                                                            <select name="max_price" class="form-control">
+                                                                <option value="">Max price</option>
+                                                                <option value="50000">$50,000</option>
+                                                                <option value="100000">$100,000</option>
+                                                                <option value="150000">$150,000</option>
+                                                                <option value="200000">$200,000</option>
+                                                                <option value="250000">$250,000</option>
+                                                                <option value="300000">$300,000</option>
+                                                                <option value="350000">$350,000</option>
+                                                                <option value="400000">$400,000</option>
+                                                                <option value="450000">$450,000</option>
+                                                                <option value="500000">$500,000</option>
+                                                                <option value="550000">$550,000</option>
+                                                                <option value="600000">$600,000</option>
+                                                                <option value="650000">$650,000</option>
+                                                                <option value="700000">$700,000</option>
+                                                                <option value="750000">$750,000</option>
+                                                                <option value="800000">$800,000</option>
+                                                                <option value="850000">$850,000</option>
+                                                                <option value="900000">$900,000</option>
+                                                                <option value="950000">$950,000</option>
+                                                                <option value="1000000">$1,000,000</option>
+                                                                <option value="1250000">$1,250,000</option>
+                                                                <option value="1500000">$1,500,000</option>
+                                                                <option value="1750000">$1,750,000</option>
+                                                                <option value="2000000">$2,000,000</option>
+                                                                <option value="3000000">$3,000,000</option>
+                                                                <option value="4000000">$4,000,000</option>
+                                                                <option value="5000000">$5,000,000</option>
+                                                                <option value="10000000">$10,000,000</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xs-12">
+                                                        <div class="form-group margin-top-20 hidden-lg hidden-md hidden-sm">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button id="rem-search-button_buy" type="submit" class="btn btn-primary btn-block ladda-button waves-effect waves-light" data-style="zoom-out"><i class="zmdi zmdi-search"></i>Search</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- List & map Buttons-->
+                                                <div class="rem-listing margin-top-20">
+                                                    <a href="#" id="type-list" class="type-listing" onclick="return list_view();"><i class="zmdi zmdi-format-list-bulleted"></i>List</a>
+                                                    <a href="#" id="type-map" class="type-listing" onclick="return map_view();"><i class="zmdi zmdi-map"></i>Map</a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- properties -->
+                    <!-- list view-->
+                    <div id="list_view">
+                    <section>
+                        <div class="oe_structure">
+                            <div class="container">
+                                <div class="row">
+                                    <t t-if="properties">
+                                        <!--<t t-foreach="properties" t-as="property">-->
+                                            <div class="pagination-container">
+                                                <div data-page="1" class="item">
+                                                    <t t-foreach="range(4)" t-as="indx">
+                                                        <t t-if="indx &lt; properties_no">
+                                                            <div class="col-xs-12">
+                                                                <div class="rem-unit-card">
+                                                                    <div class="rem-unit-card-img-container">
+                                                                        <!--carousel-->
+                                                                        <div class="carousel slide carousel-fade" data-ride="carousel" t-att-id="'carousel'+str(properties[indx].id)">
+                                                                            <div class="carousel-inner" role="listbox">
+                                                                                <div class="item active">
+                                                                                    <div itemprop="image"><img class="img img-responsive" t-att-src="'data:image/gif;base64,'+str(properties[indx].image)"/></div>
+                                                                                </div>
+                                                                                <div class="item">
+                                                                                    <div itemprop="image"><img class="img img-responsive" src="http://demo.reconnect-crm.com/web/image/rem.image/3/image?unique=112d01a"/></div>
+                                                                                </div>
+                                                                                <div class="item">
+                                                                                    <div itemprop="image"><img class="img img-responsive" src="http://demo.reconnect-crm.com/web/image/rem.image/4/image?unique=112d01a"/></div>
+                                                                                </div>
+                                                                                <div class="item">
+                                                                                    <div itemprop="image"><img class="img img-responsive" src="http://demo.reconnect-crm.com/web/image/rem.image/12/image?unique=112d01a"/></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <a class="left carousel-control" role="button" data-slide="prev" t-attf-href="#carousel#{properties[indx].id}">
+                                                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                                                <span class="sr-only">Previous</span>
+                                                                            </a>
+                                                                            <a class="right carousel-control" role="button" data-slide="next" t-attf-href="#carousel#{properties[indx].id}">
+                                                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                                                <span class="sr-only">Next</span>
+                                                                            </a>
+                                                                        </div>
+                                                                        <!-- partner -->
+                                                                        <div class="rem-unit-card-agent-container">
+                                                                            <figure class="rem-unit-card-agent">
+                                                                                <div itemtype="http://schema.org/RealEstateAgent" itemscope="">
+                                                                                    <meta itemprop="name" content="Porter L. Curley"/>
+                                                                                </div>
+                                                                                <div class="rem-unit-card-agent-wrapper">
+                                                                                    <img class="rem-unit-card-agent-photo" src="http://demo.reconnect-crm.com/rem/user/20" alt="" title="Porter L. Curley"/>
+                                                                                </div>
+                                                                                <figcaption><span t-field="properties[indx].project_id.name"/></figcaption>
+                                                                            </figure>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="rem-unit-card-text-container">
+                                                                        <div itemtype="http://schema.org/Product" itemscope="">
+                                                                            <meta itemprop="name" content="406 Main S, SOMER, 5 bd • 5 ba."/>
+                                                                            <div itemtype="http://schema.org/Offer" itemprop="offers" itemscope="">
+                                                                                <meta itemprop="description" content="&lt;p&gt;&lt;br&gt;&lt;/p&gt;"/>
+                                                                                <meta itemprop="priceCurrency" content="USD"/>
+                                                                                <meta itemprop="price" content="800053.0"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <!-- Price -->
+                                                                            <div class="rem-unit-card-price">
+                                                                                <div>$ <span class="oe_currency_value" t-field="properties[indx].list_price"/></div>
+                                                                            </div>
+                                                                            <!-- Details -->
+                                                                            <a itemprop="url" t-attf-href="/property_details/#{ properties[indx].id }">
+                                                                                <div class="rem-unit-card-title">
+                                                                                    <div><span t-field="properties[indx].name"/>, <span t-field="properties[indx].project_id.name"/>, <span t-field="properties[indx].bed_rooms"/> bd • <span t-field="properties[indx].bath_rooms"/>ba</div>
+                                                                                </div>
+                                                                            </a>
+                                                                            <!-- Icons -->
+                                                                            <div class="rem-unit-card-details">
+                                                                                <span title="Bedrooms">
+                                                                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                                                                    <span t-field="properties[indx].bed_rooms"/>
+                                                                                </span>
+                                                                                <span title="Bathrooms">
+                                                                                    <i class="fa fa-bath" aria-hidden="true"></i>
+                                                                                    <span t-field="properties[indx].bath_rooms"/>
+                                                                                </span>
+                                                                                <span title="Garages">
+                                                                                    <i class="fa fa-car" aria-hidden="true"></i>
+                                                                                    <span t-field="properties[indx].garage"/>
+                                                                                </span>
+                                                                                <a itemprop="url" t-attf-href="/property_details/#{ properties[indx].id }">
+                                                                                    <span class="rem-unit-card-actions-details">
+                                                                                        Details <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a itemprop="url" href="#">
+                                                                                    <span class="rem-unit-card-actions-favorite" id="fv-1">
+                                                                                        <i class="fa fa-star-o"></i> Save
+                                                                                    </span>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </t>
+                                                    </t>
+                                                </div>
+                                                <t t-if="more_than_one_list">
+                                                    <t t-set="x" t-value="4"/>
+                                                    <t t-set="y" t-value="8"/>
+                                                    <t t-foreach="range(1, list_items)" t-as="j">
+                                                        <div t-att-data-page="j+1" class="item" style="display: none;">
+                                                            <t t-foreach="range(x, y)" t-as="indx">
+                                                                <t t-if="indx &lt; properties_no">
+                                                                    <div class="col-xs-12">
+                                                                        <div class="rem-unit-card">
+                                                                            <div class="rem-unit-card-img-container">
+                                                                                <!--carousel-->
+                                                                                <div class="carousel slide carousel-fade" data-ride="carousel" t-att-id="'carousel'+str(properties[indx].id)">
+                                                                                    <div class="carousel-inner" role="listbox">
+                                                                                        <div class="item active">
+                                                                                            <div itemprop="image"><img class="img img-responsive" t-att-src="'data:image/gif;base64,'+str(properties[indx].image)"/></div>
+                                                                                        </div>
+                                                                                        <div class="item">
+                                                                                            <div itemprop="image"><img class="img img-responsive" src="http://demo.reconnect-crm.com/web/image/rem.image/3/image?unique=112d01a"/></div>
+                                                                                        </div>
+                                                                                        <div class="item">
+                                                                                            <div itemprop="image"><img class="img img-responsive" src="http://demo.reconnect-crm.com/web/image/rem.image/4/image?unique=112d01a"/></div>
+                                                                                        </div>
+                                                                                        <div class="item">
+                                                                                            <div itemprop="image"><img class="img img-responsive" src="http://demo.reconnect-crm.com/web/image/rem.image/12/image?unique=112d01a"/></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <a class="left carousel-control" role="button" data-slide="prev" t-attf-href="#carousel#{properties[indx].id}">
+                                                                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                                                        <span class="sr-only">Previous</span>
+                                                                                    </a>
+                                                                                    <a class="right carousel-control" role="button" data-slide="next" t-attf-href="#carousel#{properties[indx].id}">
+                                                                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                                                        <span class="sr-only">Next</span>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <!-- partner -->
+                                                                                <div class="rem-unit-card-agent-container">
+                                                                                    <figure class="rem-unit-card-agent">
+                                                                                        <div itemtype="http://schema.org/RealEstateAgent" itemscope="">
+                                                                                            <meta itemprop="name" content="Porter L. Curley"/>
+                                                                                        </div>
+                                                                                        <div class="rem-unit-card-agent-wrapper">
+                                                                                            <img class="rem-unit-card-agent-photo" src="http://demo.reconnect-crm.com/rem/user/20" alt="" title="Porter L. Curley"/>
+                                                                                        </div>
+                                                                                        <figcaption><span t-field="properties[indx].project_id.name"/></figcaption>
+                                                                                    </figure>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="rem-unit-card-text-container">
+                                                                                <div itemtype="http://schema.org/Product" itemscope="">
+                                                                                    <meta itemprop="name" content="406 Main S, SOMER, 5 bd • 5 ba."/>
+                                                                                    <div itemtype="http://schema.org/Offer" itemprop="offers" itemscope="">
+                                                                                        <meta itemprop="description" content="&lt;p&gt;&lt;br&gt;&lt;/p&gt;"/>
+                                                                                        <meta itemprop="priceCurrency" content="USD"/>
+                                                                                        <meta itemprop="price" content="800053.0"/>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <!-- Price -->
+                                                                                    <div class="rem-unit-card-price">
+                                                                                        <div>$ <span class="oe_currency_value" t-field="properties[indx].list_price"/></div>
+                                                                                    </div>
+                                                                                    <!-- Details -->
+                                                                                    <a itemprop="url" t-attf-href="/property_details/#{ properties[indx].id }">
+                                                                                        <div class="rem-unit-card-title">
+                                                                                            <div><span t-field="properties[indx].name"/>, <span t-field="properties[indx].project_id.name"/>, <span t-field="properties[indx].bed_rooms"/> bd • <span t-field="properties[indx].bath_rooms"/>ba</div>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                    <!-- Icons -->
+                                                                                    <div class="rem-unit-card-details">
+                                                                                        <span title="Bedrooms">
+                                                                                            <i class="fa fa-bed" aria-hidden="true"></i>
+                                                                                            <span t-field="properties[indx].bed_rooms"/>
+                                                                                        </span>
+                                                                                        <span title="Bathrooms">
+                                                                                            <i class="fa fa-bath" aria-hidden="true"></i>
+                                                                                            <span t-field="properties[indx].bath_rooms"/>
+                                                                                        </span>
+                                                                                        <span title="Garages">
+                                                                                            <i class="fa fa-car" aria-hidden="true"></i>
+                                                                                            <span t-field="properties[indx].garage"/>
+                                                                                        </span>
+                                                                                        <a itemprop="url" t-attf-href="/property_details/#{ properties[indx].id }">
+                                                                                            <span class="rem-unit-card-actions-details">
+                                                                                                Details <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                                                                            </span>
+                                                                                        </a>
+                                                                                        <a itemprop="url" href="#">
+                                                                                            <span class="rem-unit-card-actions-favorite" id="fv-1">
+                                                                                                <i class="fa fa-star-o"></i> Save
+                                                                                            </span>
+                                                                                        </a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <t t-if="indx==y">
+                                                                        <t t-if="y &lt; properties_no">
+                                                                            <t t-set="x" t-value="y"/>
+                                                                            <t t-set="y" t-value="y+4"/>
+                                                                        </t>
+                                                                    </t>
+                                                                </t>
+                                                            </t>
+                                                        </div>
+                                                    </t>
+                                                </t>
+                                                <div class="text-center">
+                                                    <div class="pagination pagination-centered">
+                                                        <ul class=" pagination">
+                                                            <li data-page="-">
+                                                                <a href="#">Prev</a>
+                                                            </li>
+                                                            <t t-foreach="range(list_items)" t-as="j">
+                                                                <t t-set="j" t-value="j+1"/>
+                                                                <li t-att-data-page="j">
+                                                                    <a href="#"><span t-esc="j"/></a>
+                                                                </li>
+                                                            </t>
+                                                            <li data-page="+">
+                                                                <a href="#">Next</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <!--</t>-->
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    </div>
+                    <!-- map view -->
+                    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDCcxxXCKbyaSABNZktg5jFEvJvuB8CwWY"></script>
+                    <div id="map_view" style="display: none;">
+                        <div id="map"></div>
+                        <div id="units-list-photo-cards">
+                            <section>
+                                <div class="oe_structure">
+                                    <div id="rem-unit-photo-card-container" class="container">
+                                        <div class="pagination-container">
+                                            <div data-page="1" class="item">
+                                                <t t-foreach="range(9)" t-as="indx">
+                                                    <t t-if="indx &lt; properties_no">
+                                                        <div class="col-sm-4 padding-0">
+                                                            <a itemprop="url" t-attf-href="/property_details/#{ properties[indx].id }">
+                                                                <div class="rem-unit-photo-card">
+                                                                    <div class="rem-unit-photo-card-img">
+                                                                        <div itemprop="image">
+                                                                            <img class="img img-responsive map_image" t-att-src="'data:image/gif;base64,'+str(properties[indx].image)" style=""/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row margin-0 height-0">
+                                                                        <div class="col-xs-12 margin-0">
+                                                                            <div class="rem-unit-photo-card-info">
+                                                                                <div class="rem-unit-photo-card-price">
+                                                                                    <div class="margin-top-10">$ <span class="oe_currency_value"><span t-field="properties[indx].list_price"/></span></div>
+                                                                                </div>
+                                                                                <div class="rem-unit-photo-card-title">
+                                                                                    <span t-field="properties[indx].name"/>, <span t-field="properties[indx].bed_rooms"/> bd • <span t-field="properties[indx].bath_rooms"/> ba
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="rem-unit-photo-card-photos">2 photos</div>
+                                                                    <span class="rem-unit-photo-card-favorite" id="fv-1">
+                                                                        <i class="fa fa-star-o"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </t>
+                                                </t>
+                                            </div>
+                                            <!-- more than one -->
+                                            <t t-if="more_than_one">
+                                                <t t-set="x" t-value="9"/>
+                                                <t t-set="y" t-value="18"/>
+                                                <t t-foreach="range(1, items)" t-as="j">
+                                                    <div t-att-data-page="j+1" class="item" style="display: none;">
+                                                        <t t-foreach="range(x, y)" t-as="indx">
+                                                            <t t-if="indx &lt; properties_no">
+                                                                <div class="col-sm-4 padding-0">
+                                                                    <a itemprop="url" t-attf-href="/property_details/#{ properties[indx].id }">
+                                                                        <div class="rem-unit-photo-card">
+                                                                            <div class="rem-unit-photo-card-img">
+                                                                                <div itemprop="image">
+                                                                                    <img class="img img-responsive map_image" t-att-src="'data:image/gif;base64,'+str(properties[indx].image)" style=""/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row margin-0 height-0">
+                                                                                <div class="col-xs-12 margin-0">
+                                                                                    <div class="rem-unit-photo-card-info">
+                                                                                        <div class="rem-unit-photo-card-price">
+                                                                                            <div class="margin-top-10">$ <span class="oe_currency_value"><span t-field="properties[indx].list_price"/></span></div>
+                                                                                        </div>
+                                                                                        <div class="rem-unit-photo-card-title">
+                                                                                            <span t-field="properties[indx].name"/>, <span t-field="properties[indx].bed_rooms"/> bd • <span t-field="properties[indx].bath_rooms"/> ba
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="rem-unit-photo-card-photos">2 photos</div>
+                                                                            <span class="rem-unit-photo-card-favorite" id="fv-1">
+                                                                                <i class="fa fa-star-o"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                                <t t-if="indx==y">
+                                                                    <t t-if="y &lt; properties_no">
+                                                                        <t t-set="x" t-value="y"/>
+                                                                        <t t-set="y" t-value="y+9"/>
+                                                                    </t>
+                                                                </t>
+                                                            </t>
+                                                        </t>
+                                                    </div>
+                                                </t>
+                                            </t>
+                                            <!-- MAP Pagination -->
+                                            <div class="text-center">
+                                                <div class="pagination pagination-centered">
+                                                    <ul class=" pagination">
+                                                        <li data-page="-">
+                                                            <a href="#">Prev</a>
+                                                        </li>
+                                                        <t t-foreach="range(items)" t-as="j">
+                                                            <t t-set="j" t-value="j+1"/>
+                                                            <li t-att-data-page="j">
+                                                                <a href="#"><span t-esc="j"/></a>
+                                                            </li>
+                                                        </t>
+                                                        <li data-page="+">
+                                                            <a href="#">Next</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+
+            </t>
+        </template>
+    </data>
+</openerp>

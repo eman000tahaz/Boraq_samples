@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+        <template id="website.after_sales" name="After Sales">
+            <t t-call="website.layout">
+                <div id="wrap"/>
+                <div id="rem-container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a href="/page/after_sales/elect"><img style="max-width: 50%;" class="center-block" src="/hdg_website/static/src/img/elect1.png"/></a>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="/page/after_sales/water"><img style="max-width: 50%;" class="center-block" src="/hdg_website/static/src/img/water1.png"/></a>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+        <!-- claims form template -->
+        <template id="website.elect_claims" name="claims">
+            <t t-call="website.layout">
+                <div id="wrap"/>
+                <div id="rem-container">
+                    <section>
+                        <div class="oe_structure">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <form action="/crm/elect/claims" method="post" enctype="multipart/form-data" class="rem-form rem-box-shadow s_website_form">
+                                        <h1 class="rem-title text-center">After-Sales ٍSupport</h1>
+                                        <!--subject and name-->
+                                        <div class="form-group form-field o_website_form_required_custom">
+                                            <input type="text" id="name" name="name" maxlength="128" class="form-control o_website_form_input" title="Name" placeholder="Your Name" required="required"/>
+                                        </div>
+                                        <div class="form-group form-field o_website_form_required_custom">
+                                            <input type="text" id="phone" name="phone" maxlength="128" class="form-control o_website_form_input" title="Phone Number" placeholder="Phone Number"/>
+                                        </div>
+                                        <div class="form-group form-field o_website_form_required_custom">
+                                            <input type="email" id="email" name="email" maxlength="128" class="form-control o_website_form_input" title="Email" placeholder="Email" required="required"/>
+                                        </div>
+                                        <div class="form-group form-field o_website_form_required_custom">
+                                            <textarea type="text" id="description" name="description" maxlength="1024" class="form-control o_website_form_input" title="Your Problem" placeholder="Your Problem" rows="6" required="required"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" id="rem-submit-button" class="btn btn-primary btn-block ladda-button waves-effect waves-light margin-top-30 o_website_form_send" data-style="zoom-out"><i class="zmdi zmdi-mail-send"></i> Send</button>
+                                        </div>
+                                        <span id="o_website_form_result" class="text-center"></span>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </t>
+        </template>
+        <template id="website.water_claims" name="claims">
+            <t t-call="website.layout">
+                <div id="wrap"/>
+                <div id="rem-container">
+                    <section>
+                        <div class="oe_structure">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <form action="/crm/water/claims" method="post" enctype="multipart/form-data" class="rem-form rem-box-shadow s_website_form">
+                                        <h1 class="rem-title text-center">After-Sales ٍSupport</h1>
+                                        <!--subject and name-->
+                                        <div class="form-group form-field o_website_form_required_custom">
+                                            <input type="text" id="name" name="name" maxlength="128" class="form-control o_website_form_input" title="Name" placeholder="Your Name" required="required"/>
+                                        </div>
+                                        <div class="form-group form-field o_website_form_required_custom">
+                                            <input type="text" id="phone" name="phone" maxlength="128" class="form-control o_website_form_input" title="Phone Number" placeholder="Phone Number"/>
+                                        </div>
+                                        <div class="form-group form-field o_website_form_required_custom">
+                                            <input type="email" id="email" name="email" maxlength="128" class="form-control o_website_form_input" title="Email" placeholder="Email" required="required"/>
+                                        </div>
+                                        <div class="form-group form-field o_website_form_required_custom">
+                                            <textarea type="text" id="description" name="description" maxlength="1024" class="form-control o_website_form_input" title="Your Problem" placeholder="Your Problem" rows="6" required="required"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" id="rem-submit-button" class="btn btn-primary btn-block ladda-button waves-effect waves-light margin-top-30 o_website_form_send" data-style="zoom-out"><i class="zmdi zmdi-mail-send"></i> Send</button>
+                                        </div>
+                                        <span id="o_website_form_result" class="text-center"></span>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </t>
+        </template>
+
+        <!-- ADD contact Us to Menu bar-->
+        <record id="menu_after_sales" model="website.menu">
+            <field name="name">After Sales</field>
+            <field name="url">/page/after_sales</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">60</field>
+        </record>
+    </data>
+</openerp>

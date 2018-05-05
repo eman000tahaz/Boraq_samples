@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <report 
+            id="action_report_account_statement"
+            model="account.report.statement"
+            string="Account Statement"
+            report_type="qweb-pdf"
+            name="noksmart_account.report_account_statement"
+            file="noksmart_account.report_account_statement"
+            />
+
+    </data>
+</odoo>

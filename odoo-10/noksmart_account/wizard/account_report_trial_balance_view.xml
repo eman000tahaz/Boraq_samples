@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<odoo>
+		<record id="account_report_balance_view_inherit" model="ir.ui.view">
+	        <field name="name">Trial Balance</field>
+	        <field name="model">account.balance.report</field>
+	        <field name="inherit_id" ref="account.account_report_balance_view"/>
+	        <field name="arch" type="xml">
+	            <data>
+	            	<xpath expr="//field[@name='display_account']" position="attributes">
+	            		<attribute name="invisible">"1"</attribute>
+	            	</xpath>
+	            	<xpath expr="(//group)[2]" position="after">
+	            		<group>
+							<field name="rep_view" widget="radio" required="1"/>
+							<newline/>
+	            		</group>
+					</xpath>
+	            </data>
+	        </field>
+	    </record>
+	</odoo>

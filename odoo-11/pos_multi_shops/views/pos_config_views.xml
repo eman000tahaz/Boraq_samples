@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- Form View -->
+    <record id="view_pos_config_form_inherit" model="ir.ui.view">
+        <field name="name">pos.config.form.view</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+		<!-- Add shop_id field -->
+        	<field name="name" position='after'>
+                <br></br>
+                <field name='shop_id' string='Shop' placeholder="Select Shop" widget='selection' required="1"/>
+        	</field>
+        </field>
+    </record>
+</odoo>

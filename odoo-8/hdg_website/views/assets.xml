@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+        <template id="website_assets_frontend_inherit" name="hdg style" inherit_id="website.assets_frontend">
+            <xpath expr="." position="inside">
+                <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
+                <link rel="stylesheet" href="/hdg_website/static/src/css/home_page.css"/>
+                <script type="text/javascript" src="/hdg_website/static/src/js/search_page.js"></script>
+                <link rel="stylesheet" href="/hdg_website/static/src/css/search_page.css"/>
+                <link rel="stylesheet" href="/hdg_website/static/src/css/property_details.css"/>
+                <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
+            </xpath>
+        </template>
+    </data>
+</openerp>

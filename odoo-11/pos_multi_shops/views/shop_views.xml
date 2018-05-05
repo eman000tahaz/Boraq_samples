@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_kanban_view_inherit" model="ir.ui.view">
+            <field name="name">Product Kanban</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_kanban_view"/>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-foreach="record.o2mfield.raw_value" t-as="o">
+                            <t t-esc="o.name"/>
+                            <t t-esc="o.m2o_field[1]"/>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    	<!-- Form Views -->
+    	<!-- shop form view -->
+	    <record id="shop_form_view" model="ir.ui.view">
+	        <field name="name">Shop Form View</field>
+	        <field name="model">shop</field>
+	        <field name="mode">primary</field>
+	        <field name="arch" type="xml">
+	            <form string="Shop">
+	            	<sheet>
+                        <field name="image" widget="image" class="oe_avatar"/>
+	            		<div class="oe_title">
+                            <label for='name' string='Name'/>
+	            			<h3><field name='name' string='Name' placeholder='Shop Name' required="1"/></h3>
+                        </div>
+                        <field name='id' invisible="1"/>
+	            		<notebook>
+	            			<page string="Products">
+	            				<field name='product_ids' widget="many2many" context="{'default_shop_id' : id}">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="shop_id" domain="[('id','=',parent.id)]"/>
+                                        <field name="categ_id"/>
+                                        <field name="lst_price"/>
+                                    </tree>
+                                </field>
+	            			</page>
+                            <page string="Points of Sale">
+                                <field name='pos_ids' widget='many2many' context="{'default_shop_id' : id}"/>
+                            </page>
+	            			<page string="Journals">
+	            				<field name='journal_ids' widget='many2many' context="{'default_shop_id' : id}"/>
+	            			</page>
+	            			<page string="Users">
+	            				<field name='user_ids' widget='many2many' context="{'default_shop_id' : id}"/>
+	            			</page>
+	            		</notebook>
+	            	</sheet>
+	            </form>
+	        </field>
+	    </record>
+
+        <!-- Users Form View-->
+        <record id="view_users_form_inherit" model="ir.ui.view">
+            <field name="name">res.users.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+            	<notebook position="inside">
+            		<page string='Shop'>
+                        <label for='shop_id' string='Shop'/>
+            			<h3><field name='shop_id' string='Shop' widget="selection"/></h3>
+            		</page>
+            	</notebook>
+            </field>
+        </record>
+		
+	    <!-- Tree Views-->
+		<!-- Shop tree view -->
+	    <record id="shop_tree_view" model="ir.ui.view">
+            <field name="name">Shop Tree View</field>
+            <field name="model">shop</field>
+            <field name="arch" type="xml">
+				<tree string="Shops">
+					<field name='name' string='Name'/>
+				</tree>
+			</field>
+		</record>
+
+        <!-- Kanban View -->
+        <!-- Shop kanban View -->
+        <record id="shop_kanban_view" model="ir.ui.view">
+            <field name="name">Shop Kanban</field>
+            <field name="model">shop</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id"/>
+                    <field name="image"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <img t-att-src="kanban_image('shop', 'image', record.id.raw_value)"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong><field name="name"/></strong>
+                                    <div name="tags"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+
+		<!-- Actions -->
+		<!-- Shop Action -->
+		<record id="shop_action" model="ir.actions.act_window">
+            <field name="name">Shop</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shop</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new shop.
+              </p>
+            </field>
+        </record>
+
+        <!-- Shop MenuItems -->
+        <menuitem id='shop_parent_menu' name='Shops'/>
+        <menuitem id='shop_menu' name='Shops' parent='shop_parent_menu'/>
+        <menuitem id='shop_sub_menu' name='Shops' parent='shop_menu' action='shop_action'/>
+        <menuitem id='product_menu' name='Products' parent='shop_parent_menu'/>
+
+        <record id="point_of_sale.menu_pos_products" model="ir.ui.menu">
+            <field name="parent_id" ref="product_menu"/>
+        </record>
+        
+
+    </data>
+</odoo>

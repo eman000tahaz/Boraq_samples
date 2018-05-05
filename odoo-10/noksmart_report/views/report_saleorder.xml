@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
+			<xpath expr="//t[@t-call='report.external_layout']" position="replace">
+		        <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+		        <div class="header">
+		        	<div class="row">
+		            	<div class="col-xs-6" style="height: 160px;">
+		            		<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' % doc.company_id.logo" style="width: 100%; max-height: 150px;"/>
+		            	</div>
+		            	<div class="col-xs-6" style="height: 160px;">
+		            		<div style="height: 140px; margin:0;">
+		            			<table class="table" style="border: 1px solid black; text-align:center;">
+					                <thead>
+					                    <tr>
+					                        <th class="text-center" colspan="2" style="background: wheat; border: 1px solid black;">
+					                        	<span t-if="doc.state not in ['draft','sent']">Sales Order</span>
+                								<span t-if="doc.state in ['draft','sent']">Sales Quotation</span>
+					                        </th>
+					                    </tr>
+					                </thead>
+					                <tbody class="invoice_tbody">
+					                    <tr>
+					                        <td style="border: 1px solid black;">
+					                        	<span t-field="doc.name"/>
+					                    	</td>
+					                        <td style="border: 1px solid black;">
+					                        	<span t-if="doc.state not in ['draft','sent']"><span t-field="doc.confirmation_date" t-field-options='{"format": "dd/MMM/yyyy"}'/></span>
+                								<span t-if="doc.state in ['draft','sent']"><span t-field="doc.date_order" t-field-options='{"format": "dd/MMM/yyyy"}'/></span>
+					                        </td>
+					                    </tr>
+					                </tbody>
+					            </table>
+		            		</div>
+		            		<div style="height: 20px;">
+				            	<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('Code128',doc.name, 250, 35)" style="position:relative; left:-30px; top:-30px;"/>
+				            </div>
+				        </div>
+		            </div>
+		        </div>
+		        <div class="page">
+		            <div class="row">
+		            	<div class="col-xs-4" style="border:1px solid black; height: 200px; padding:0;">
+		            		<div class="col-xs-6" style="background: wheat; border:1px solid black; text-align:center; height:40px;">
+		            			<strong style="position:relative; bottom:-9px;">
+		            				Customer
+								</strong>
+		            		</div>
+		            		<div class="col-xs-6" style="width: 50%;"/>
+		            		<div class="col-xs-12" style="width: 100%;">
+		            			<p t-field="doc.partner_id.name"/>
+		            		</div>
+		            	</div>
+		            	<div class="col-xs-4" style="border:1px solid black; height: 200px; padding:0;">
+		            		<div class="col-xs-6" style="background: wheat; border:1px solid black; text-align:center; height:40px;">
+		            			<strong style="position:relative; bottom:-9px;">Contact
+		            			</strong>
+		            		</div>
+		            		<div class="col-xs-6" style="width: 50%;"/>
+		            		<div class="col-xs-12" style="width: 100%;">
+		            			<address t-field="doc.partner_id"
+		                        t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' />
+		            		</div>
+		            	</div>
+		            	<div class="col-xs-4" style="border:1px solid black; height: 200px; padding:0;">
+		            		<div class="col-xs-6" style="background: wheat; border:1px solid black; text-align:center; height:40px;">
+		            			<strong style="position:relative; bottom:-9px;">Ship to</strong>
+		            		</div>
+		            		<div class="col-xs-6" style="width: 50%;"/>
+		            		<div class="col-xs-12" style="width: 100%;">
+		            			<address t-field="doc.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}'/>
+		            		</div>
+		            	</div>
+		            </div>
+		            <div class="row">
+		            	<div style="padding: 0px;">
+		            		<table class="table" style="margin-bottom: 0px; font-size:12px; text-align:center; table-layout: fixed;">
+				                <tr>
+				                	<td style="width:20%; border:1px solid black; background:wheat;">Account</td>
+				                	<td style="width:30%; border: 1px solid black; background:wheat;">Terms</td>
+				                	<td style="width:16%; border: 1px solid black; background:wheat;">Due Date</td>
+				                	<td style="width:18%; border: 1px solid black; background:wheat;">Account Rep.</td>
+				                	<td style="width:16%; border: 1px solid black; background:wheat;">Schedual Date</td>
+				                </tr>
+				                <tr>
+				                	<td style="width:20%; border:1px solid black;">
+				                		<!-- <span t-field="o.account_id.code"/> -->
+				                	</td>
+				                	<td style="width:30%; border: 1px solid black;">
+				                		<p t-if="doc.payment_term_id">
+							                <span t-field="doc.payment_term_id"/>
+							            </p>
+				                	</td>
+				                	<td style="width:16%; border: 1px solid black;">
+				                		<span t-if="doc.state not in ['draft','sent']" t-field="doc.confirmation_date" t-field-options='{"format": "dd/MMM/yyyy"}'/>
+    									<span t-if="doc.state in ['draft','sent']" t-field="doc.date_order" t-field-options='{"format": "dd/MMM/yyyy"}'/>
+				                	</td>
+				                	<td style="width:18%; border: 1px solid black;">
+				                		<span t-field="doc.user_id"/>
+				                	</td>
+				                	<td style="width:16%; border: 1px solid black;">
+				                		<span t-if="doc.state not in ['draft','sent']" t-field="doc.confirmation_date" t-field-options='{"format": "dd/MMM/yyyy"}'/>
+    									<span t-if="doc.state in ['draft','sent']" t-field="doc.date_order" t-field-options='{"format": "dd/MMM/yyyy"}'/>
+				                	</td>
+				                </tr>
+		            		</table>
+		            		<table class="table" style="margin-bottom: 0px; font-size:12px; text-align:center; table-layout: fixed;">
+			            		<tr>
+				                	<td style="width:20%; border:1px solid black; background:wheat; overflow: hidden;">Quotation</td>
+				                	<td style="width:30%; border: 1px solid black; background:wheat; overflow: hidden;">PO #</td>
+				                	<td style="width:16%; border: 1px solid black; background:wheat; overflow: hidden;">Reference</td>
+				                	<td style="width:18%; border: 1px solid black; background:wheat; overflow: hidden;">Ship Via</td>
+				                	<td style="width:6%; border: 1px solid black; background:wheat; overflow: hidden;">Page</td>
+				                	<td style="width:10%; border: 1px solid black; background:wheat; overflow: hidden;">Printed</td>
+				                </tr>
+				                <tr>
+				                	<td style="width:20%; border:1px solid black; overflow: hidden;">
+				                		<p t-field="doc.name"/>
+				                	</td>
+				                	<td style="width:30%; border: 1px solid black; overflow: hidden;">
+									<p>   </p>
+				                	</td>
+				                	<td style="width:16%; border: 1px solid black; overflow: hidden;">
+				                		<t t-if="doc.client_order_ref">
+                   							<p t-field="doc.client_order_ref"/>
+                   						</t>
+				                	</td>
+				                	<td style="width:18%; border: 1px solid black; overflow: hidden;">
+				                		<p t-field="doc.picking_policy"/>
+				                	</td>
+				                	<td style="width:6%; border: 1px solid black; overflow: hidden;">1
+				                		<!-- <div class="footer">
+				                			<span class="page" />
+				                		</div>	 -->
+				                	</td>
+				                	<td style="width:10%; border: 1px solid black; overflow: hidden;">
+				                		<p t-field="doc.write_date"/>
+				                	</td>
+				                </tr>
+				            </table>
+				            <table class="table" style="margin-bottom: 0px; font-size:12px; text-align:center; table-layout: fixed;">
+			            		<tr>
+				                	<td style="width:5%; border:1px solid black; background:wheat; overflow: hidden;">L</td>
+				                	<td style="width:15%; border:1px solid black; background:wheat; overflow: hidden;">Item</td>
+				                	<td style="width:30%; border: 1px solid black; background:wheat; overflow: hidden;">Description</td>
+				                	<td style="width:8%; border: 1px solid black; background:wheat; overflow: hidden;">Order</td>
+				                	<td style="width:8%; border: 1px solid black; background:wheat; overflow: hidden;">Ship</td>
+				                	<td style="width:9%; border: 1px solid black; background:wheat; overflow: hidden;">Price</td>
+				                	<td style="width:9%; border: 1px solid black; background:wheat; overflow: hidden;">Discount</td>
+				                	<td style="width:16%; border: 1px solid black; background:wheat; overflow: hidden;">Amount</td>
+				                </tr>
+				                <t t-set="i" t-value="1"/>
+				                <tr t-foreach="doc.order_line" t-as="l">
+				                	<td style="width:5%; border:none; border-left:1px solid black; overflow: hidden;">
+				                		<span t-esc="i"/>
+				                	</td>
+				                	<td style="width:15%; border:none; border-left:1px solid black; overflow: hidden;">
+				                		<span t-field="l.product_id.name"/>
+				                	</td>
+				                	<td style="width:30%; border:none; border-left:1px solid black; overflow: hidden;">
+				                		<span t-field="l.name"/>
+				                	</td>
+				                	<td style="width:8%; border:none; border-left:1px solid black; overflow: hidden;">
+				                		<span t-field="l.product_uom_qty"/>
+				                	</td>
+				                	<td style="width:8%; border:none; border-left:1px solid black; overflow: hidden;">
+				                		<span t-field="l.qty_delivered"/>
+				                	</td>
+				                	<td style="width:9%; border:none; border-left:1px solid black; overflow: hidden;">
+				                		<t t-set="pr" t-value="l.price_subtotal / l.product_uom_qty"/>
+				                		<span t-esc="pr"/>
+				                	</td>
+				                	<td style="width:9%; border:none; border-left:1px solid black; overflow: hidden;">
+				                		<span t-field="l.discount"/>
+				                	</td>
+				                	<td style="width:16%; border:none; border-left:1px solid black; border-right:1px solid black; overflow: hidden;">
+				                		<span t-field="l.price_subtotal" 
+		                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+				                	</td>
+				                	<t t-set="i" t-value="i+1"/>
+				                </tr>
+				                <tr t-foreach="range(15-i)" t-as="ii">
+				                	<td style="width:5%; border:none; border-left:1px solid black; overflow: hidden;"></td>
+				                	<td style="width:15%; border:none; border-left:1px solid black; overflow: hidden;"></td>
+				                	<td style="width:30%; border:none; border-left: 1px solid black; overflow: hidden;"></td>
+				                	<td style="width:8%; border:none; border-left: 1px solid black; overflow: hidden;"></td>
+				                	<td style="width:8%; border:none; border-left: 1px solid black; overflow: hidden;"></td>
+				                	<td style="width:9%; border:none; border-left: 1px solid black; overflow: hidden;"></td>
+				                	<td style="width:9%; border:none; border-left: 1px solid black; overflow: hidden;"></td>
+				                	<td style="width:16%; border:none; border-left: 1px solid black; border-right:1px solid black; overflow: hidden;"></td>
+				                </tr>
+				            </table>
+				            <table class="table borderless" style="margin-bottom:0px; border:1px solid black; font-size:12px; table-layout: fixed;">
+				            	<tr>
+				            		<td style="width:50%; border:none; overflow: hidden;">
+				            			<span t-if="doc.note" t-field="doc.note" style="color:grey;"/>
+				            			<span t-if="not doc.note" style="color:grey;">
+				            				Thanks for trusting <span t-field="doc.company_id.name"/>, Please visit our website
+				            				<br/>
+				            				<span t-field="doc.company_id.website"/>
+				            			</span>
+				            		</td>
+				            		<td style="width:20%; border:none; border-left:1px solid black; overflow: hidden;">Tax Details
+				            			<t t-foreach="doc._get_tax_amount_by_group()" t-as="amount_by_group">
+				            				<br></br>
+				            				<span t-esc="amount_by_group[0]" style="color:grey;"/>
+				            				<span t-esc="amount_by_group[1]" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}' style="color:grey;"/>
+				            			</t>
+				            		</td>
+				            		<td style="width:15%; background:wheat; border:none; border-left:1px solid black; overflow: hidden;">Taxable</td>
+				            		<td style="width:15%; border:none; border-left:1px solid black; overflow: hidden;">
+				            			<span t-field="doc.amount_untaxed" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+				            		</td>
+				            	</tr>
+				            	<tr>
+				            		<td style="width:50%; border:none; overflow: hidden;"></td>
+				            		<td style="width:20%; border:none; border-left:1px solid black; overflow: hidden;">Payment Details</td>
+				            		<td style="width:15%; background:wheat; border:none; border-left:1px solid black; overflow: hidden;">Total Tax(EGP)</td>
+				            		<td style="width:15%; border:none; border-left:1px solid black; overflow: hidden;">
+				            			<t t-if="doc.amount_tax">
+				            				<span t-field="doc.amount_tax"/>
+				            			</t>
+				            			<t t-else="">0</t>
+				            		</td>
+				            	</tr>
+				            	<tr>
+				            		<td style="width:50%; border:none; overflow: hidden;"></td>
+				            		<td style="width:20%; border:none; border-left:1px solid black; overflow: hidden;">
+				            			<p style="color:grey;">Amount Shown in <span t-field="doc.pricelist_id.currency_id"/></p>
+				            			<p style="color:grey;">Rate <span t-field="doc.pricelist_id.currency_id.rate"/></p>
+				            		</td>
+				            		<td style="width:15%; background:wheat; border:none; border-left:1px solid black; overflow: hidden;">Total(EGP)</td>
+				            		<td style="width:15%; border:none; border-left:1px solid black; overflow: hidden;">
+				            			<span t-field="doc.amount_total" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+				            		</td>
+				            	</tr>
+				            </table>
+				        </div>    	
+		            </div>
+				</div>
+				<div class="footer">
+        			<div class="text-center" style="border-top: 1px solid black;">
+        				<ul class="list-inline">
+        					<li>Phone: <span t-field="doc.company_id.phone"/></li>
+
+			                <li>&amp;bull;</li>
+			                <li>Fax: <span t-field="doc.company_id.fax"/></li>
+
+			                <li>&amp;bull;</li>
+			                <li>Email: <span t-field="doc.company_id.email"/></li>
+
+			                <li>&amp;bull;</li>
+			                <li>Website: <span t-field="doc.company_id.website"/></li>
+			            </ul>
+			        </div>
+			    </div>
+				<!-- prevent errors -->
+				<div name="payment_term" t-if="doc.payment_term_id" class="col-xs-3" style="display:none;">
+                    <strong>Payment Terms:</strong>
+                    <p t-field="doc.payment_term_id"/>
+                </div>
+			</xpath>
+		</template>
+	</data>
+</odoo>

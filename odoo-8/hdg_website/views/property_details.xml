@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+        <template id="website.property_details" page="True">
+            <t t-call="website.layout">
+                <div id="rem-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <section>
+                                    <div class="oe_structure">
+                                        <div class="rem-unit-container rem-box-shadow">
+                                            <div id="carousel-unit" class="carousel slide carousel-fade" data-ride="carousel">
+                                                <div class="carousel-inner" role="listbox">
+                                                    <div class="item active">
+                                                        <span itemprop="image"><img class="img img-responsive" t-att-src="'data:image/gif;base64,'+str(property.image)" style=""/></span>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span itemprop="image"><img class="img img-responsive" src="http://demo.reconnect-crm.com/web/image/rem.image/1/image?unique=112d01a" style=""/></span>
+                                                    </div>
+                                                </div>
+                                                <a class="left carousel-control" href="#carousel-unit" role="button" data-slide="prev">
+                                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="right carousel-control" href="#carousel-unit" role="button" data-slide="next">
+                                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </div>
+                                            <div class="rem-unit-info-contact-container">
+                                                <div class="row">
+                                                    <div class="col-sm-8 col-xs-12 rem-unit-info-container">
+                                                        <div class="rem-unit-info">
+                                                            <div itemtype="http://schema.org/Product" itemscope="">
+                                                                <meta itemprop="name" content="69734 E Ca, MC MI, 3 bd • 5 ba."/>
+                                                                <div itemtype="http://schema.org/Offer" itemprop="offers" itemscope="">
+                                                                    <meta itemprop="description"/>
+                                                                    <meta itemprop="priceCurrency" content="USD"/>
+                                                                    <meta itemprop="price" content="245258.0"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="rem-unit-title">
+                                                                <div><span t-field="property.name"/>, <span t-field="property.bed_rooms"/> bd • <span t-field="property.bath_rooms"/> ba</div>
+                                                            </div>
+                                                            <div class="rem-unit-price">
+                                                                <div>$ <span class="oe_currency_value"><span t-field="property.list_price"/></span></div>
+                                                            </div>
+                                                            <div class="rem-unit-sub-title">
+                                                                <span title="Bedrooms" class="margin-right-30">
+                                                                    <i class="fa fa-bed"></i> <span t-field="property.bed_rooms"/>
+                                                                </span>
+                                                                <span title="Bathrooms" class="margin-right-30">
+                                                                    <i class="fa fa-bath" aria-hidden="true"></i> <span t-field="property.bath_rooms"/>
+                                                                </span>
+                                                                <span title="Garages">
+                                                                    <i class="fa fa-car"></i> <span t-field="property.garage"/>
+                                                                </span>
+                                                            </div>
+                                                            <div class="rem-unit-description">
+                                                            </div>
+                                                            <div class="features">
+                                                                <div class="feature-title margin-bottom-10">General Features</div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <div><label>Bathrooms:</label><span t-field="property.bath_rooms"/></div><div><label>Land Area:</label>9532.0</div><div class="rem-inline-block"><label>Points of Interest:</label></div><div class="rem-tag rem-inline-block">Near rail station</div><div class="rem-tag rem-inline-block">Country side</div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <div><label>Bedrooms:</label><span t-field="property.bed_rooms"/></div><div><label>Living Area:</label>5242.0</div><div><label>Toilets:</label>1</div>
+                                                                        </div>
+                                                                    </div>
+                                                                <div class="feature-title margin-bottom-10">Indoor Features</div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <div><label>Dishwasher:</label><i class="fa fa-check"></i></div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <div><label>Ducted Cooling:</label><i class="fa fa-check"></i></div>
+                                                                        </div>
+                                                                    </div>
+                                                                <div class="feature-title margin-bottom-10">Outdoor Features</div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <div><label>Dog Friendly:</label><i class="fa fa-check"></i></div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <div><label>Garage Spaces:</label>3</div>
+                                                                        </div>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xs-12 rem-unit-contact-container">
+                                                        <form id="unit-contact-form" action="/crm/leads" method="post" data-model_name="crm.lead" data-success_page="/page/website_crm.contactus_thanks" enctype="multipart/form-data" class="rem-form rem-box-shadow s_website_form">
+                                                            <div class="text-center rem-unit-contact-title">
+                                                                Want me to call you?
+                                                            </div>
+                                                            <div class="rem-unit-contact-agent-container">
+                                                                <figure class="rem-unit-contact-agent">
+                                                                    <div itemtype="http://schema.org/RealEstateAgent" itemscope="">
+                                                                        <meta itemprop="name" content="Karla R. Williams"/>
+                                                                    </div>
+                                                                    <div class="rem-unit-contact-agent-wrapper">
+                                                                        <img class="rem-unit-card-agent-photo" src="http://demo.reconnect-crm.com/rem/user/16" alt="Karla R. Williams" title="Karla R. Williams"/>
+                                                                    </div>
+                                                                    <figcaption><span t-field="property.project_id.name"/></figcaption>
+                                                                </figure>
+                                                            </div>
+                                                            <div class="form-group form-field o_website_form_required_custom">
+                                                                <input type="text" id="name" name="name" maxlength="128" class="form-control o_website_form_input" title="Name" placeholder="Name" required="required"/>
+                                                            </div>
+                                                            <div class="form-group form-field o_website_form_required_custom">
+                                                                <input type="text" id="phone" name="phone" maxlength="128" class="form-control o_website_form_input" title="Phone Number" placeholder="Phone Number"/>
+                                                            </div>
+                                                            <div class="form-group form-field o_website_form_required_custom">
+                                                                <input type="email" id="email" name="email" maxlength="128" class="form-control o_website_form_input" title="Email" placeholder="Email" required="required"/>
+                                                            </div>
+                                                            <div class="form-group form-field o_website_form_required_custom">
+                                                                <textarea type="text" id="description" name="description" maxlength="1024" class="form-control o_website_form_input" title="Your Question" placeholder="Your Question" rows="6" required="required">I am interested in this property</textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <button type="submit" id="rem-submit-button" class="btn btn-primary btn-block ladda-button waves-effect waves-light margin-top-30 o_website_form_send" data-style="zoom-out"><i class="fa fa-paper-plane"> </i>   Contact Agent</button>
+                                                            </div>
+                                                            <span id="o_website_form_result" class="text-center"></span>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</openerp>

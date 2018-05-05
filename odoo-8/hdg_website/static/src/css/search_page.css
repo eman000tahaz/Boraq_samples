@@ -1,0 +1,182 @@
+@charset "UTF-8";
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+#rem-container .rem-unit-card{
+    margin: 15px auto;
+    border-bottom: 2px solid #DCDCDC;
+    max-width: 640px;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -ms-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}
+#rem-container .rem-unit-card:hover{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+#rem-container .rem-unit-card-img-container, #rem-container .rem-unit-card-img-container img{
+    max-width: 640px;
+    height: 480px;
+    object-fit: cover;
+    background: #ffffff;
+}
+#rem-container .carousel-fade .carousel-inner .item, #rem-container .carousel-fade .carousel-inner .active.left, #rem-container .carousel-fade .carousel-inner .active.right{
+    opacity: 0;
+}
+#rem-container .carousel-fade .carousel-inner .active, #rem-container .carousel-fade .carousel-inner .next.left, #rem-container .carousel-fade .carousel-inner .prev.right{
+    opacity: 1;
+}
+#rem-container .carousel-fade .carousel-control{
+    z-index: 2;
+}
+/*carousel left arrow*/
+.carousel .carousel-control.left {
+    left: -25px;
+}
+/* card below carousel */
+#rem-container .rem-unit-card-agent-container{
+    position: relative;
+    margin: 0;
+    max-width: 640px;
+    float: right;
+}
+#rem-container .rem-unit-card-agent{
+    position: absolute;
+    text-align: center;
+    margin: -45px 0 0 -130px;
+    display: block;
+}
+#rem-container article, #rem-container figcaption, #rem-container figure{
+    display: block;
+}
+/* partner image */
+#rem-container .rem-unit-card-agent-wrapper{
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid #FFF;
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    margin: auto;
+}
+#rem-container .rem-unit-card-agent-wrapper img{
+    width: 70px;
+    height: auto;
+}
+/* property details */
+#rem-container .rem-unit-card-text-container, #rem-container .rem-unit-card a{
+    color: #444444;
+}
+#rem-container .rem-unit-card-text-container{
+    background: #FFFFFF;
+    padding: 20px 40px;
+    height: auto;
+}
+#rem-container .rem-unit-card-price{
+    font-size: 20px;
+    font-family: "Open Sans SemiBold", "Helvetica Neue", Helvetica,Arial, "Lucida Grande", sans-serif;
+    margin-bottom: 20px;
+}
+#rem-container .rem-unit-card-title{
+    margin-bottom: 10px;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    display: block;
+}
+#rem-container .rem-unit-card-details{
+    color: #777777;
+    margin-top: 20px;
+}
+#rem-container .rem-unit-card-details span{
+    margin-right: 20px;
+    font-size: 14px;
+}
+#rem-container .rem-unit-card-details a:hover, #rem-container .rem-unit-card-details a:focus{
+    color: #AA4D93;
+}
+#rem-container a:hover, #rem-container a:focus{
+    color: #AA4D93 ;
+}
+#rem-container .rem-unit-card-details i{
+    margin-right: 4px;
+    font-size: 16px;
+}
+#rem-container .rem-unit-card-actions-favorite, #rem-container .rem-unit-card-actions-details{
+    float: right;
+}
+/* Map view */
+#map {
+	height: 600px;
+	width: 100%;
+	margin-bottom: 40px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+/*Photo Cards*/
+#rem-container #rem-unit-photo-card-container {
+	margin-bottom: 40px;
+}
+#rem-container .rem-unit-photo-card {
+	background: #FFF !important;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+#rem-container .height-0 {
+	height: 0px;
+}
+#rem-container .rem-unit-photo-card-photos {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-top: 10px;
+	margin-left: 10px;
+	color: #FFF;
+	text-shadow: 0 0 3px rgba(0,0,0,0.5);
+	font-size: 13px;
+	font-family: "Open Sans Semibold", "Helvetica Neue", Helvetica,Arial, "Lucida Grande", sans-serif;
+}
+#rem-container .rem-unit-photo-card-info {
+	color: #FFF;
+	font-family: "Open Sans Regular", "Helvetica Neue", Helvetica,Arial, "Lucida Grande", sans-serif;
+	font-size: 18px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-shadow: 0 0 3px rgba(0,0,0,0.5);
+}
+#rem-container .rem-unit-photo-card-price {
+	font-size: 22px;
+}
+#rem-container .rem-unit-photo-card-title {
+	font-size: 13px;
+	color: #EEE;
+}
+#rem-container .rem-unit-photo-card-favorite {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-top: 10px;
+	margin-right: 10px;
+	color: #FFF;
+	text-shadow: 0 0 3px rgba(0,0,0,0.5);
+	font-size: 30px;
+}
+.map_image{
+	display: block;
+	width: 100%;
+	height: 250px;
+}
+
+
+
+
+
+

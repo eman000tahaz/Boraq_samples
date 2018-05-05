@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+        <template id="website.homepage" name="Home page"  page="True">
+            <t t-call="website.layout">
+                <div id="wrap"/>
+                <div id="rem-container">
+                    <!-- Carousel -->
+                    <div class="oe_structure">
+                        <div id="carousel-homepage" class="carousel slide carousel-fade max-height-600 rem-box-shadow" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item">
+                                    <img src="http://demo.reconnect-crm.com/website_rem/static/img/carousel/bg_1.jpg" alt="" class="max-height-600"/>
+                                </div>
+                                <div class="item">
+                                    <img src="http://demo.reconnect-crm.com/website_rem/static/img/carousel/bg_2.jpg" alt="" class="max-height-600"/>
+                                </div>
+                                <div class="item active">
+                                    <img src="http://demo.reconnect-crm.com/website_rem/static/img/carousel/bg_3.jpg" alt="" class="max-height-600"/>
+                                </div>
+                                <div class="item">
+                                    <img src="http://demo.reconnect-crm.com/website_rem/static/img/carousel/bg_4.jpg" alt="" class="max-height-600"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search Bar -->
+                    <div id="search-homepage">
+                        <section>
+                            <div class="oe_structure">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-12">
+                                            <form method="post" action="/property">
+                                                <div class="rem-form-search rem-box-shadow padding-0-30">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="active" id="ct-1"><a data-toggle="tab" href="#buy">Buy</a></li>
+                                                        <li id="ct-2" class=""><a data-toggle="tab" href="#rent">Rent</a></li>
+                                                    </ul>
+                                                    <input id="offer_type" name="offer_type" value="1" type="hidden"/>
+                                                    <div class="row">
+                                                        <div class="col-sm-8 col-xs-12">
+                                                            <div class="form-group">
+                                                                <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                                                                    <input id="name" name="name" t-attf-value="#{name or ''}" maxlength="128" class="form-control" title="Search for state, city or zone" placeholder="Search for state, city or zone" autocomplete="off" type="text"/>
+                                                                    <div class="rem-autocomplete-container">
+                                                                        <ul id="multi_search_autocomplete_buy" class="rem-autocomplete rem-box-shadow display-none"></ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 col-xs-12">
+                                                            <div class="form-group">
+                                                                <div class="form-group">
+                                                                    <select name="property_type" class="form-control selected">
+                                                                        <option value="">All Property Types</option>
+                                                                        <option value="1">Flats / Appartments</option>
+                                                                        <option value="2">Houses</option>
+                                                                        <option value="3">Bungalows</option>
+                                                                        <option value="4">Land</option>
+                                                                        <option value="5">Commercial Property</option>
+                                                                        <option value="6">Other</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row margin-top-20">
+                                                        <div class="col-sm-push-8 col-sm-4 col-xs-12 hidden-xs">
+                                                            <div class="form-group">
+                                                                <button type="reset" value="reset" class="btn btn-default btn-block ladda-button waves-effect waves-light"><i class="fa fa-eraser" aria-hidden="true"></i>Reset</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-pull-4 col-sm-4 col-xs-12">
+                                                            <div class="form-group">
+                                                                <select name="min_beds" class="form-control selected">
+                                                                    <option value="">Min beds</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-pull-4 col-sm-4 col-xs-12">
+                                                            <div class="form-group">
+                                                                <select name="max_beds" class="form-control">
+                                                                    <option value="">Max beds</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row margin-top-20">
+                                                        <div class="col-sm-4 col-xs-12">
+                                                            <div class="form-group">
+                                                                <select name="min_price" class="form-control">
+                                                                    <option value="">Min price</option>
+                                                                    <option value="50000">$50,000</option>
+                                                                    <option value="100000">$100,000</option>
+                                                                    <option value="150000">$150,000</option>
+                                                                    <option value="200000">$200,000</option>
+                                                                    <option value="250000">$250,000</option>
+                                                                    <option value="300000">$300,000</option>
+                                                                    <option value="350000">$350,000</option>
+                                                                    <option value="400000">$400,000</option>
+                                                                    <option value="450000">$450,000</option>
+                                                                    <option value="500000">$500,000</option>
+                                                                    <option value="550000">$550,000</option>
+                                                                    <option value="600000">$600,000</option>
+                                                                    <option value="650000">$650,000</option>
+                                                                    <option value="700000">$700,000</option>
+                                                                    <option value="750000">$750,000</option>
+                                                                    <option value="800000">$800,000</option>
+                                                                    <option value="850000">$850,000</option>
+                                                                    <option value="900000">$900,000</option>
+                                                                    <option value="950000">$950,000</option>
+                                                                    <option value="1000000">$1,000,000</option>
+                                                                    <option value="1250000">$1,250,000</option>
+                                                                    <option value="1500000">$1,500,000</option>
+                                                                    <option value="1750000">$1,750,000</option>
+                                                                    <option value="2000000">$2,000,000</option>
+                                                                    <option value="3000000">$3,000,000</option>
+                                                                    <option value="4000000">$4,000,000</option>
+                                                                    <option value="5000000">$5,000,000</option>
+                                                                    <option value="10000000">$10,000,000</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 col-xs-12">
+                                                            <div class="form-group">
+                                                                <select name="max_price" class="form-control">
+                                                                    <option value="">Max price</option>
+                                                                    <option value="50000">$50,000</option>
+                                                                    <option value="100000">$100,000</option>
+                                                                    <option value="150000">$150,000</option>
+                                                                    <option value="200000">$200,000</option>
+                                                                    <option value="250000">$250,000</option>
+                                                                    <option value="300000">$300,000</option>
+                                                                    <option value="350000">$350,000</option>
+                                                                    <option value="400000">$400,000</option>
+                                                                    <option value="450000">$450,000</option>
+                                                                    <option value="500000">$500,000</option>
+                                                                    <option value="550000">$550,000</option>
+                                                                    <option value="600000">$600,000</option>
+                                                                    <option value="650000">$650,000</option>
+                                                                    <option value="700000">$700,000</option>
+                                                                    <option value="750000">$750,000</option>
+                                                                    <option value="800000">$800,000</option>
+                                                                    <option value="850000">$850,000</option>
+                                                                    <option value="900000">$900,000</option>
+                                                                    <option value="950000">$950,000</option>
+                                                                    <option value="1000000">$1,000,000</option>
+                                                                    <option value="1250000">$1,250,000</option>
+                                                                    <option value="1500000">$1,500,000</option>
+                                                                    <option value="1750000">$1,750,000</option>
+                                                                    <option value="2000000">$2,000,000</option>
+                                                                    <option value="3000000">$3,000,000</option>
+                                                                    <option value="4000000">$4,000,000</option>
+                                                                    <option value="5000000">$5,000,000</option>
+                                                                    <option value="10000000">$10,000,000</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 col-xs-12">
+                                                            <div class="form-group margin-top-20 hidden-lg hidden-md hidden-sm">
+<!--
+                                                                <a href="/rem" class="btn btn-default btn-block ladda-button waves-effect waves-light"><i class="fa fa-eraser" aria-hidden="true"></i>Reset</a>
+-->
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <button id="rem-search-button_buy" type="submit" class="btn btn-primary btn-block ladda-button waves-effect waves-light" data-style="zoom-out"><i class="zmdi zmdi-search"></i>Search</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                        <!-- rent -->
+                                                      <!--  <div id="rent" class="tab-pane fade in">
+                                                            <div class="row">
+                                                                <div class="col-sm-8 col-xs-12">
+                                                                    <div class="form-group">
+                                                                        <input id="multi_search" name="multi_search" maxlength="128" class="form-control" title="Search for state, city or zone" placeholder="Search for state, city or zone" autocomplete="off" type="text"/>
+                                                                        <div class="rem-autocomplete-container">
+                                                                            <ul id="multi_search_autocomplete" class="rem-autocomplete rem-box-shadow display-none"></ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4 col-xs-12">
+                                                                    <div class="form-group">
+                                                                        <div class="form-group">
+                                                                            <select name="unit_type" class="form-control selected">
+                                                                                <option value="">All Property Types</option>
+                                                                                <option value="1">Flats / Appartments</option>
+                                                                                <option value="2">Houses</option>
+                                                                                <option value="3">Bungalows</option>
+                                                                                <option value="4">Land</option>
+                                                                                <option value="5">Commercial Property</option>
+                                                                                <option value="6">Other</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row margin-top-20">
+                                                                <div class="col-sm-push-8 col-sm-4 col-xs-12 hidden-xs">
+                                                                    <div class="form-group">
+                                                                        <a href="/rem" class="btn btn-default btn-block ladda-button waves-effect waves-light"><i class="fa fa-eraser" aria-hidden="true"></i>Reset</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-pull-4 col-sm-4 col-xs-12">
+                                                                    <div class="form-group">
+                                                                        <select name="min_beds" class="form-control selected">
+                                                                            <option value="">Min beds</option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-pull-4 col-sm-4 col-xs-12">
+                                                                    <div class="form-group">
+                                                                        <select name="max_beds" class="form-control">
+                                                                            <option value="">Max beds</option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row margin-top-20">
+                                                                <div class="col-sm-4 col-xs-12">
+                                                                    <div class="form-group">
+                                                                        <select name="min_price" class="form-control">
+                                                                            <option value="">Min price</option>
+                                                                            <option value="50,000">$50,000</option>
+                                                                            <option value="100,000">$100,000</option>
+                                                                            <option value="150,000">$150,000</option>
+                                                                            <option value="200,000">$200,000</option>
+                                                                            <option value="250,000">$250,000</option>
+                                                                            <option value="300,000">$300,000</option>
+                                                                            <option value="350,000">$350,000</option>
+                                                                            <option value="400,000">$400,000</option>
+                                                                            <option value="450,000">$450,000</option>
+                                                                            <option value="500,000">$500,000</option>
+                                                                            <option value="550,000">$550,000</option>
+                                                                            <option value="600,000">$600,000</option>
+                                                                            <option value="650,000">$650,000</option>
+                                                                            <option value="700,000">$700,000</option>
+                                                                            <option value="750,000">$750,000</option>
+                                                                            <option value="800,000">$800,000</option>
+                                                                            <option value="850,000">$850,000</option>
+                                                                            <option value="900,000">$900,000</option>
+                                                                            <option value="950,000">$950,000</option>
+                                                                            <option value="1,000,000">$1,000,000</option>
+                                                                            <option value="1,250,000">$1,250,000</option>
+                                                                            <option value="1,500,000">$1,500,000</option>
+                                                                            <option value="1,750,000">$1,750,000</option>
+                                                                            <option value="2,000,000">$2,000,000</option>
+                                                                            <option value="3,000,000">$3,000,000</option>
+                                                                            <option value="4,000,000">$4,000,000</option>
+                                                                            <option value="5,000,000">$5,000,000</option>
+                                                                            <option value="10,000,000">$10,000,000</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4 col-xs-12">
+                                                                    <div class="form-group">
+                                                                        <select name="max_price" class="form-control">
+                                                                            <option value="">Max price</option>
+                                                                            <option value="50,000">$50,000</option>
+                                                                            <option value="100,000">$100,000</option>
+                                                                            <option value="150,000">$150,000</option>
+                                                                            <option value="200,000">$200,000</option>
+                                                                            <option value="250,000">$250,000</option>
+                                                                            <option value="300,000">$300,000</option>
+                                                                            <option value="350,000">$350,000</option>
+                                                                            <option value="400,000">$400,000</option>
+                                                                            <option value="450,000">$450,000</option>
+                                                                            <option value="500,000">$500,000</option>
+                                                                            <option value="550,000">$550,000</option>
+                                                                            <option value="600,000">$600,000</option>
+                                                                            <option value="650,000">$650,000</option>
+                                                                            <option value="700,000">$700,000</option>
+                                                                            <option value="750,000">$750,000</option>
+                                                                            <option value="800,000">$800,000</option>
+                                                                            <option value="850,000">$850,000</option>
+                                                                            <option value="900,000">$900,000</option>
+                                                                            <option value="950,000">$950,000</option>
+                                                                            <option value="1,000,000">$1,000,000</option>
+                                                                            <option value="1,250,000">$1,250,000</option>
+                                                                            <option value="1,500,000">$1,500,000</option>
+                                                                            <option value="1,750,000">$1,750,000</option>
+                                                                            <option value="2,000,000">$2,000,000</option>
+                                                                            <option value="3,000,000">$3,000,000</option>
+                                                                            <option value="4,000,000">$4,000,000</option>
+                                                                            <option value="5,000,000">$5,000,000</option>
+                                                                            <option value="10,000,000">$10,000,000</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4 col-xs-12">
+                                                                    <div class="form-group margin-top-20 hidden-lg hidden-md hidden-sm">
+                                                                        <a href="/rem" class="btn btn-default btn-block ladda-button waves-effect waves-light"><i class="fa fa-eraser" aria-hidden="true"></i>Reset</a>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <button id="rem-search-button" type="submit" class="btn btn-primary btn-block ladda-button waves-effect waves-light" data-style="zoom-out"><i class="zmdi zmdi-search"></i>Search</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
+                                                    <!-- MAp and list view !!!!! -->
+                                                    <!--<div class="rem-listing margin-top-20">
+                                                        <span id="type-list" class="type-listing selected"><i class="zmdi zmdi-format-list-bulleted"></i>List</span>
+                                                        <span id="type-map" class="type-listing"><i class="zmdi zmdi-map"></i>Map</span>
+                                                        <input id="type_listing" name="type_listing" type="hidden"/>
+                                                    </div>-->
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- section2 *** three images -->
+                    <section>
+                        <div class="oe_structure">
+                            <div class="container rem-promote">
+                                <div class="row margin-top-50">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="rem-promote-item">
+                                            <div class="col-sm-12 col-xs-6 padding-0">
+                                                <div class="rem-promote-item-img">
+                                                    <img src="http://demo.reconnect-crm.com/website_rem/static/img/highlights/highlight_1.jpg" alt="" class="img-responsive"/>
+                                                </div>
+                                                <div class="row margin-0">
+                                                    <div class="col-xs-12 margin-0">
+                                                        <div class="rem-promote-item-title">
+                                                            Millions of listings
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-6 padding-0">
+                                                <div class="rem-promote-item-text">
+                                                    You want to start a new life and rent a new home? We have properties you won't find anywhere else.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="rem-promote-item">
+                                            <div class="col-sm-12 col-xs-6 padding-0">
+                                                <div class="rem-promote-item-img">
+                                                    <img src="http://demo.reconnect-crm.com/website_rem/static/img/highlights/highlight_2.jpg" alt="" class="img-responsive"/>
+                                                </div>
+                                                <div class="row margin-0">
+                                                    <div class="col-xs-12 margin-0">
+                                                        <div class="rem-promote-item-title">
+                                                            Best price in market
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-6 padding-0">
+                                                <div class="rem-promote-item-text">
+                                                    Let us help you to find the right property, at right place with the right price.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="rem-promote-item">
+                                            <div class="col-sm-12 col-xs-6 padding-0">
+                                                <div class="rem-promote-item-img">
+                                                    <img src="http://demo.reconnect-crm.com/website_rem/static/img/highlights/highlight_3.jpg" alt="" class="img-responsive"/>
+                                                </div>
+                                                <div class="row margin-0">
+                                                    <div class="col-xs-12 margin-0">
+                                                        <div class="rem-promote-item-title">
+                                                            Guaranteed services
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-6 padding-0">
+                                                <div class="rem-promote-item-text">
+                                                    Our managers will keep you informed and you can act with certainty.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Section3 *** three images -->
+                    <section>
+                        <div class="oe_structure">
+                            <div class="container rem-promote margin-bottom-50">
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="rem-promote-item">
+                                            <div class="col-sm-12 col-xs-6 padding-0">
+                                                <div class="rem-promote-item-img">
+                                                    <img src="http://demo.reconnect-crm.com/website_rem/static/img/highlights/highlight_4.jpg" alt="" class="img-responsive"/>
+                                                </div>
+                                                <div class="row margin-0">
+                                                    <div class="col-xs-12 margin-0">
+                                                        <div class="rem-promote-item-title">
+                                                            Easy to find
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-6 padding-0">
+                                                <div class="rem-promote-item-text">
+                                                    Look at our latest listed properties and check out the facilities on them. You will find something match-able to your needs.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="rem-promote-item">
+                                            <div class="col-sm-12 col-xs-6 padding-0">
+                                                <div class="rem-promote-item-img">
+                                                    <img src="http://demo.reconnect-crm.com/website_rem/static/img/highlights/highlight_5.jpg" alt="" class="img-responsive"/>
+                                                </div>
+                                                <div class="row margin-0">
+                                                    <div class="col-xs-12 margin-0">
+                                                        <div class="rem-promote-item-title">
+                                                            Best agents
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-6 padding-0">
+                                                <div class="rem-promote-item-text">
+                                                    Our experienced agents can help you buy or sell homes.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="rem-promote-item">
+                                            <div class="col-sm-12 col-xs-6 padding-0">
+                                                <div class="rem-promote-item-img">
+                                                    <img src="http://demo.reconnect-crm.com/website_rem/static/img/highlights/highlight_6.jpg" alt="" class="img-responsive"/>
+                                                </div>
+                                                <div class="row margin-0">
+                                                    <div class="col-xs-12 margin-0">
+                                                        <div class="rem-promote-item-title">
+                                                            Marketing research
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-6 padding-0">
+                                                <div class="rem-promote-item-text">
+                                                    All our marketing researchers today have a tough job multitasking.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- last Section slider -->
+                    <section class="clearfix">
+                        <div class="oe_structure">
+                            <div class="container margin-bottom-50 hidden-xs">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="row">
+                                            <div class="col-sm-9">
+                                                <div class="margin-bottom-0 pull-left featured_title">Feature units</div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="rem-feature-units-controls controls pull-right">
+                                                    <a class="left fa fa-chevron-left waves-effect waves-light" href="#carousel-feature-units" data-slide="prev"></a>
+                                                    <a class="right fa fa-chevron-right waves-effect waves-light" href="#carousel-feature-units" data-slide="next"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="carousel-feature-units" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="item active">
+                                                    <div class="row">
+                                                        <t t-foreach="range(4)" t-as="indx">
+                                                            <t t-if="indx &lt; units_no">
+                                                                <a t-attf-href="/property_details/#{ units[indx].id }">
+                                                                    <div class="col-sm-3">
+                                                                        <div class="rem-feature-unit">
+                                                                            <div class="rem-feature-unit-img">
+                                                                                <img class="img img-responsive" alt="" t-att-src="'data:image/gif;base64,'+str(units[indx].image)"/>
+                                                                            </div>
+                                                                            <div class="rem-feature-unit-text">
+                                                                                <span t-field="units[indx].name"/>,<!-- <span t-field="units[indx].project_id.name"/>-->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </t>
+                                                        </t>
+                                                    </div>
+                                                </div>
+                                                <t t-if="more_than_one">
+                                                    <t t-set="x" t-value="4"/>
+                                                    <t t-set="y" t-value="8"/>
+                                                    <t t-foreach="range(1, items)" t-as="j">
+                                                        <div class="item">
+                                                            <div class="row">
+                                                                <t t-foreach="range(x, y)" t-as="indx">
+                                                                    <t t-if="indx &lt; units_no">
+                                                                        <a t-attf-href="/property_details/#{ units[indx].id }">
+                                                                            <div class="col-sm-3">
+                                                                                <div class="rem-feature-unit">
+                                                                                    <div class="rem-feature-unit-img">
+                                                                                        <img class="img img-responsive" alt="" t-att-src="'data:image/gif;base64,'+str(units[indx].image)"/>
+                                                                                    </div>
+                                                                                    <div class="rem-feature-unit-text">
+                                                                                        <span t-field="units[indx].name"/>, <!--<span t-field="units[indx].project_id.name"/>-->
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                        <t t-if="indx==y">
+                                                                            <t t-if="y &lt; units_no">
+                                                                                <t t-set="x" t-value="y"/>
+                                                                                <t t-set="y" t-value="y+4"/>
+                                                                            </t>
+                                                                        </t>
+                                                                    </t>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                    </t>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </t>
+        </template>
+
+       <!-- <record id="main_page_link" model="website.menu">
+            <field name="name">Website</field>
+            <field name="url">/page/mainpage</field>
+            <field name="parent_id" ref="website.main_menu" />
+            <field name="sequence" type="int">99</field>
+        </record>-->
+
+
+    </data>
+</openerp>

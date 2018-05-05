@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+        <template id="website.contact_us" name="Contact Form">
+            <t t-call="website.layout">
+                <div id="wrap"/>
+                <div id="rem-container">
+                    <section>
+                        <div class="oe_structure">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <form action="/crm/leads" method="post" enctype="multipart/form-data" class="rem-form rem-box-shadow s_website_form">
+                                        <h1 class="rem-title text-center">Contact us</h1>
+                                        <div class="form-group form-field o_website_form_required_custom">
+                                            <input type="text" id="name" name="name" maxlength="128" class="form-control o_website_form_input" title="Your Name" placeholder="Subject" required="required"/>
+                                        </div>
+                                        <div class="form-group form-field o_website_form_required_custom">
+                                            <input type="text" id="phone" name="phone" maxlength="128" class="form-control o_website_form_input" title="Phone Number" placeholder="Phone Number"/>
+                                        </div>
+                                        <div class="form-group form-field o_website_form_required_custom">
+                                            <input type="email" id="email" name="email" maxlength="128" class="form-control o_website_form_input" title="Email" placeholder="Email" required="required"/>
+                                        </div>
+                                        <div class="form-group form-field o_website_form_required_custom">
+                                            <textarea type="text" id="description" name="description" maxlength="1024" class="form-control o_website_form_input" title="Your Question" placeholder="Your Question" rows="6" required="required"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" id="rem-submit-button" class="btn btn-primary btn-block ladda-button waves-effect waves-light margin-top-30 o_website_form_send" data-style="zoom-out"><i class="zmdi zmdi-mail-send"></i> Send</button>
+                                        </div>
+                                        <span id="o_website_form_result" class="text-center"></span>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </t>
+        </template>
+        <!-- thanks template -->
+        <!-- Thanks Form-->
+            <template id="leads_thanks" name="Leads">
+                <t t-call="website.layout">
+                  <div id="wrap">
+                    <div class="oe_structure"/>
+                    <div class="container">
+                        <h1>Thanks!</h1>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="alert alert-success">
+                                    Your Request has been sent successfully
+                                    <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                                </div>
+                                <p>
+                                    We will get back to you shortly.
+                                </p><p class="mt64">
+                                    If you have an emergency, do not hesitate to contact us by phone:
+                                </p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fa fa-phone"></i> :  (+202) 259 237 88</li>
+                                    <li><i class="fa fa-envelope"></i> : info@zoser.com</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <t t-call="website.company_description"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oe_structure"/>
+                  </div>
+                </t>
+            </template>
+
+        <!-- ADD contact Us to Menu bar-->
+        <record id="menu_contact_us" model="website.menu">
+            <field name="name">Contact Us</field>
+            <field name="url">/page/contact_us</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">60</field>
+        </record>
+    </data>
+</openerp>
